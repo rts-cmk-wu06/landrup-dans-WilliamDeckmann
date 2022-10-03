@@ -1,12 +1,9 @@
 // Imports
 import { Routes, Route } from "react-router-dom";
 
-/* // Context
-import { ApiContext } from "./context/ApiContext";
-import { AuthContext } from "./context/AuthContext"; */
-
 // Templates
 import ContextProvider from "./templates/ContextProvider"
+import NavigationMenu from "./templates/NavigationMenu";
 
 // Just for testing
 import { useState, useEffect } from "react";
@@ -58,7 +55,7 @@ function App() {
               </div>
             )}
           </div>
-
+          <NavigationMenu />
         </div>
     </ContextProvider>
   );
