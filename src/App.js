@@ -1,6 +1,9 @@
 // Imports
 import { Routes, Route } from "react-router-dom";
 
+// Pages
+import Welcome from "./pages/Welcome"
+
 // Templates
 import ContextProvider from "./templates/ContextProvider"
 import NavigationMenu from "./templates/NavigationMenu";
@@ -28,10 +31,9 @@ function App() {
 
   return (
     <ContextProvider>
-        CURRENT PAGE:
         <div className="App">
           <Routes>
-            <Route exact path="/" element={<div>welcome</div>} />
+            <Route exact path="/" element={<Welcome />} />
             <Route exact path="/home" element={<div>home</div>} />
             <Route exact path="/search" element={<div>search</div>} />
             <Route exact path="/calender" element={<div>calender</div>} />

@@ -1,6 +1,7 @@
 const HouseIcon = () => {
   return (
     <svg
+      className="House-icon"
       width="41"
       height="41"
       viewBox="0 0 41 41"
