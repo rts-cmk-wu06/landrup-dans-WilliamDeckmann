@@ -8,7 +8,7 @@ import CalenderIcon from '../icons/CalenderIcon';
 
 const NavigationMenu = () => {
   return (
-    <nav className="Navigation-menu pt-[15px] pb-[10px] px-7 bg-grey flex justify-between">
+    <nav className="Navigation-menu w-full pt-[15px] pb-[10px] px-7 fixed bottom-0 bg-grey flex justify-between">
       <MenuIcon link="/home" icon={<HouseIcon />}/>
       <MenuIcon link="/search" icon={<SearchIcon />}/>
       <MenuIcon link="/calender" icon={<CalenderIcon />}/>

@@ -22,4 +22,4 @@ const ContextProvider = ({ children }) => {
   );
 };
 
-export default ContextProvider;
+export { ContextProvider, ApiContext, AuthContext };
