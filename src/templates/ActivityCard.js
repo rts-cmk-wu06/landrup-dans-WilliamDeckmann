@@ -10,7 +10,7 @@ const ActivityCard = (props) => {
       <div
         className="Activity-card h-[344px] flex fle-col items-end bg-no-repeat overflow-auto bg-cover bg-center rounded-[39px] rounded-br-none bg-purple"
         key={props.id}
-        style={{ backgroundImage: "url(" + props.asset.url + ")" }}
+        style={{ backgroundImage: `url(${props.asset.url})` }}
       >
         <section
           className="w-full p-[25px] flex flex-col gap-2 rounded-tr-[39px] bg-pink"

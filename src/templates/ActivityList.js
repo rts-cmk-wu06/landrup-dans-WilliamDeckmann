@@ -5,6 +5,8 @@ import Loader from "../components/Loader";
 
 // Context
 import { ApiContext } from "./ContextProvider"
+
+// Templates
 import ActivityCard from "./ActivityCard";
 
 const ActivityList = () => {
@@ -26,7 +28,6 @@ const ActivityList = () => {
 
   // Update with use-effect
   useEffect(() => {
-    console.log(activities);
   }, [activities]);
 
   return (
