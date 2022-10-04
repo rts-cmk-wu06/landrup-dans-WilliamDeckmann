@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Context
-import { ApiContext } from "../templates/ContextProvider";
+import { ApiContext } from "../context/ContextProvider";
 
 // Templates
 import PageContainer from "../templates/PageContainer";

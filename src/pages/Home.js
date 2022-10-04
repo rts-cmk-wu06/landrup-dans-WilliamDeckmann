@@ -9,7 +9,7 @@ import TextLarge from "../components/TextLarge";
 
 const Home = () => {
   return (
-    <div className="Home">
+    <div className="Home h-full">
       <PageContainer>
         <PageHeader>
           <TextLarge text="Aktiviteter" />

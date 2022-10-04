@@ -12,12 +12,12 @@ const ActivityCard = (props) => {
         key={props.id}
         style={{ backgroundImage: `url(${props.asset.url})` }}
       >
-        <section
-          className="w-full p-[25px] flex flex-col gap-2 rounded-tr-[39px] bg-pink"
-          style={{ opacity: "0.8" }}
-        >
+        <section className="w-full p-[25px] flex flex-col gap-2 rounded-tr-[39px] bg-pink-faded">
           <TextSmall text={props.name} contrast={true} />
-          <TextSmall text={`${props.minAge}-${props.maxAge} år`} contrast={true} />
+          <TextSmall
+            text={`${props.minAge}-${props.maxAge} år`}
+            contrast={true}
+          />
         </section>
       </div>
     </Link>

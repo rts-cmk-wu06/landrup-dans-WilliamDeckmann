@@ -1,0 +1,52 @@
+// Imports
+import { useContext } from "react";
+
+// Context
+import { SearchContext } from "../context/ContextProvider";
+
+// Templates
+import NavigationMenu from "../templates/NavigationMenu";
+import PageContainer from "../templates/PageContainer";
+import PageHeader from "../templates/PageHeader";
+import ActivityListFiltered from "../templates/ActivityListFiltered";
+
+// Components
+import TextLarge from "../components/TextLarge";
+import SearchBar from "../components/SearchBar";
+import TextSmall from "../components/TextSmall";
+
+const Search = () => {
+  // Context
+  const { searchState } = useContext(SearchContext);
+
+  const CheckInput = () => {
+    if (searchState == undefined) {
+      return (
+        <TextSmall text="Click to search." />
+      );
+    } else if (searchState == "") {
+      return (
+        <TextSmall text="No input..." />
+      );
+    } else {
+      return (
+        <ActivityListFiltered />
+      )
+    }
+  }
+
+  return (
+    <div className="Search h-full">
+      <PageContainer>
+        <PageHeader>
+          <TextLarge text="Aktiviteter" />
+          <SearchBar />
+        </PageHeader>
+        {CheckInput()}
+      </PageContainer>
+      <NavigationMenu />
+    </div>
+  );
+};
+
+export default Search;

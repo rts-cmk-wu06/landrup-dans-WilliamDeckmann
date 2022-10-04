@@ -5,9 +5,10 @@ import { Routes, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
+import Search from "./pages/Search";
 
-// Templates
-import { ContextProvider } from "./templates/ContextProvider";
+// Context
+import { ContextProvider } from "./context/ContextProvider";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             path="/details/activity-:id"
             element={<Details />}
           />
-          <Route exact path="/search" element={<div>search</div>} />
+          <Route exact path="/search" element={<Search />} />
           <Route exact path="/calender" element={<div>calender</div>} />
           <Route exact path="/login" element={<div>welcome</div>} />
           <Route path="*" element={<div>nothing found...</div>} />

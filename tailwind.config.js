@@ -10,6 +10,8 @@ module.exports = {
       'grey': '#EAEAEA',
       'purple': '#5E2E53',
       'pink': '#E1A1E9',
+      'grey-faded': 'rgba(234, 234, 234, 0.3)',
+      'pink-faded': 'rgba(225, 161, 233, 0.8)',
     },
     extend: {
       fontSize: {
