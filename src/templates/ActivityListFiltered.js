@@ -47,12 +47,12 @@ const ActivityListFiltered = () => {
               )
             } else if (index == 0) {
               return (
-                <TextSmall text="No results matched" />
+                <TextSmall text="Intet resultat matchede" />
               )
             }
           })
         ) : (
-          <Loader text="activities" />
+          <Loader text="aktiviteter" />
         )}
       </ul>
     </div>

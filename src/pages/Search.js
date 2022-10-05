@@ -22,11 +22,11 @@ const Search = () => {
   const CheckInput = () => {
     if (searchState == undefined) {
       return (
-        <TextSmall text="Click to search." />
+        <TextSmall text="Klik for at søge." />
       );
     } else if (searchState == "") {
       return (
-        <TextSmall text="No input..." />
+        <TextSmall text="Intet input..." />
       );
     } else {
       return (

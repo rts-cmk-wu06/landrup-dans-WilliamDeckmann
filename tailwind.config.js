@@ -11,6 +11,7 @@ module.exports = {
       'purple': '#5E2E53',
       'pink': '#E1A1E9',
       'grey-faded': 'rgba(234, 234, 234, 0.3)',
+      'purple-faded': 'rgb(94, 46, 83, 0.5)',
       'pink-faded': 'rgba(225, 161, 233, 0.8)',
     },
     extend: {

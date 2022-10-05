@@ -38,7 +38,7 @@ const ActivityList = () => {
             <ActivityCard {...activity} />
           )
         ) : (
-          <Loader text="activities" />
+          <Loader text="aktiviteter" />
         )}
       </ul>
     </div>

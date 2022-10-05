@@ -88,22 +88,6 @@ Er et framework der gør det muligt meget hurtigt og nemt at style på ens kompo
 
 <br/>
 
-### fontawesome (fontawesome-svg-core, free-solid-svg-icons, react-fontawesome)
-
-Gør det muligt på simpelvis at hente forskellige ikoner ned fra FontAwesomes egen hjemmeside, som derefter kan bruges og styles hvor som helst i ens applikation.
-
-> Jeg valgte at hente mine fonte fra FontAwesome, da de har et omfattende bibliotek af mange forskllige ikoner som på simple vis nemt kan importeres og bruges i ens projekt. FontAwesome havde også alle de ikoner som jeg have brug for til opgaven, hvilken gjorde det oplagt at bruges deres pakke til mit projekt.
-
-<br/>
-
-### react-use-draggable-scroll
-
-Laver en simple "dragable" container som kan indeholde forskelligt indhold, som skal trækkes hen over skærmen, ligesom et slags slideshow. Containeren bruges i det her tilfælde til at vise alle class kortene.
-
-> Jeg er klar over at der findes mange forskellige pakker på npm´s hjemmeside, som alle giver hver deres bud på et slider komponent. Dog valgte jeg specifikt at bruge den her pakke, da jeg finder den meget simpel og overskuelig at bruge og nem at implementere, hvilket var et kæmpe plus i mit tilfælde da jeg ikke havde meget overskud til at teste og fifle med forskellige pakker for at finde en simple slider.
-
-<br/>
-
 ## Yderligere imports
 
 ### Google fonts (Poppins)
@@ -141,7 +125,7 @@ Netlify er en en af de mest brugte hosting hjemmesider til front-end developers 
 
 ## valgfri ekstraopgave
 
-### Valgfri opgave (xxxxx – Automatiseret Deployment)
+### Valgfri opgave: A – Automatiseret Deployment
 
 Opgaven bestod i at ligge applikationen automatisk op på en online tjeneste, som i det her tilfælde endte op med at være Netlify. Automatiseringen indbefattede at siden skulle opdateres hvis der blev udført et commit eller lavet et pull-request.
 

@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 
 // Assets
-import Hero from "../assets/splash-image.jpg"
+import Hero from "../assets/splash-image.jpg";
 
 // Icons
 import DansIcon from "../icons/DansIcon";
@@ -12,15 +12,17 @@ import LandrupIcon from "../icons/LandrupIcon";
 import Button from "../components/Button";
 
 const Welcome = () => {
-  
   // Navigate
   const navigate = useNavigate();
   const Navigate = () => {
     navigate("/home");
-  }
+  };
 
   return (
-    <div className="Welcome w-full h-screen flex flex-col justify-end bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${Hero})` }}>
+    <div
+      className="Welcome w-full h-screen flex flex-col justify-end bg-no-repeat bg-cover bg-center"
+      style={{ backgroundImage: `url(${Hero})` }}
+    >
       <section>
         <div className="pl-[44px] pb-4 flex flex-col gap-2">
           <LandrupIcon />
@@ -33,6 +35,6 @@ const Welcome = () => {
       </footer>
     </div>
   );
-}
- 
+};
+
 export default Welcome;
