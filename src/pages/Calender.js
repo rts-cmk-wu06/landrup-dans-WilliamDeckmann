@@ -6,6 +6,15 @@ import { AuthContext } from "../context/ContextProvider";
 import { TokenContext } from "../context/ContextProvider";
 import { UserContext } from "../context/ContextProvider";
 
+// Components
+import TextLarge from "../components/TextLarge";
+
+// Templates
+import NavigationMenu from "../templates/NavigationMenu";
+import PageContainer from "../templates/PageContainer";
+import PageHeader from "../templates/PageHeader";
+import CalenderList from "../templates/CalenderList";
+
 const Calender = () => {
 
   // Context
@@ -14,11 +23,20 @@ const Calender = () => {
   const { user } = useContext(UserContext);
 
   return (
-    <div className="Calender">
+    <div className="Calender min-h-screen bg-purple">
+      <PageContainer>
+        <PageHeader>
+          <TextLarge text="Kalender" />
+        </PageHeader>
+        <CalenderList />
+      </PageContainer>
+      <NavigationMenu/>
+      {/*
       Page: /calender<br/>
       Auth: {authenticated ? <>true</> : <>false</>}<br/>
       Token: {token}<br/>
       User: {user}<br/>
+      */}
     </div>
   );
 }

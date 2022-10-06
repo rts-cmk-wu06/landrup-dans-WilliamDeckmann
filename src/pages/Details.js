@@ -45,7 +45,7 @@ const Details = () => {
   }, [activities]);
 
   return (
-    <div className="Details h-screen grid">
+    <div className="Details min-h-screen h-screen grid bg-purple">
       {activities ? (
         <div
           className="py-6 px-[27px] flex justify-end items-end bg-no-repeat bg-cover bg-center"

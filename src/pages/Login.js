@@ -11,7 +11,7 @@ const Login = () => {
         style={{ backgroundImage: `url(${Hero})`, display: "grid", gridTemplate: "1fr / 100vw", placeItems: "center" }}
       >
         <div
-          className=" w-[757px] h-[480px] bg-purple-faded rotate-[-27deg]"
+          className=" w-[3000px] h-[480px] bg-purple-faded rotate-[-27deg]"
           style={{ gridColumn: "1 / 1", gridRow: "1 / 1" }}
         >
         </div>

@@ -14,7 +14,8 @@ const ContextProvider = ({ children }) => {
   const api = "http://localhost:4000/api/v1";
   const [authenticated, setAuthenticated] = useState(false);
   const [token, setToken] = useState(undefined);
-  const [user, setUser] = useState(undefined);
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
   const [searchState, setSearchState] = useState(undefined);
 
   return (
@@ -22,7 +23,7 @@ const ContextProvider = ({ children }) => {
       <ApiContext.Provider value={api}>
         <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
           <TokenContext.Provider value={{ token, setToken }}>
-            <UserContext.Provider value={{ user, setUser }}>
+            <UserContext.Provider value={{ name, setName, password, setPassword }}>
               <SearchContext.Provider value={{ searchState, setSearchState }}>
                 {children}
               </SearchContext.Provider>

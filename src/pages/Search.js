@@ -36,7 +36,7 @@ const Search = () => {
   }
 
   return (
-    <div className="Search h-full">
+    <div className="Search min-h-screen bg-purple">
       <PageContainer>
         <PageHeader>
           <TextLarge text="Aktiviteter" />

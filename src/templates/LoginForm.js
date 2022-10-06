@@ -19,6 +19,7 @@ import TextSmall from "../components/TextSmall";
 import Button from "../components/Button";
 
 const LoginForm = () => {
+  
   // Use-form & Yup-resolver
   const {
     register,
@@ -32,7 +33,7 @@ const LoginForm = () => {
   // Context
   const { setAuthenticated } = useContext(AuthContext);
   const { setToken } = useContext(TokenContext);
-  const { setUser } = useContext(UserContext);
+  const { setName, setPassword } = useContext(UserContext);
 
   // API fetch data
   const [loginError, setLoginError] = useState(undefined);
@@ -67,11 +68,11 @@ const LoginForm = () => {
         }
       )
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           setAuthenticated(true);
           setToken(response.data.token);
-          setUser(userName);
+          setName(userName);
+          setPassword(userPassword);
           setLoginError(false);
           setLoading(false);
           navigate("/calender")
