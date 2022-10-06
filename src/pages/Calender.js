@@ -1,9 +1,9 @@
 // Import
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Context
 import { AuthContext } from "../context/ContextProvider";
-import { TokenContext } from "../context/ContextProvider";
 import { UserContext } from "../context/ContextProvider";
 
 // Components
@@ -14,13 +14,34 @@ import NavigationMenu from "../templates/NavigationMenu";
 import PageContainer from "../templates/PageContainer";
 import PageHeader from "../templates/PageHeader";
 import CalenderList from "../templates/CalenderList";
+import CalenderRosterList from "../templates/CalenderRosterList";
 
 const Calender = () => {
 
   // Context
   const { authenticated } = useContext(AuthContext);
-  const { token } = useContext(TokenContext);
-  const { user } = useContext(UserContext);
+  const { name } = useContext(UserContext);
+
+  // Navigate
+  const navigate = useNavigate();
+
+  // Return to login
+  const Navigate = () => {
+    navigate("/login")
+  };
+
+  // Return to login
+  const ShowList = () => {
+    if (name.includes("user")) {
+      return (
+        <CalenderList />
+      )
+    } else if (name.includes("instructor")) {
+      return (
+        <CalenderRosterList />
+      )
+    }
+  };
 
   return (
     <div className="Calender min-h-screen bg-purple">
@@ -28,15 +49,9 @@ const Calender = () => {
         <PageHeader>
           <TextLarge text="Kalender" />
         </PageHeader>
-        <CalenderList />
+        {authenticated ? ShowList() : Navigate()}
       </PageContainer>
       <NavigationMenu/>
-      {/*
-      Page: /calender<br/>
-      Auth: {authenticated ? <>true</> : <>false</>}<br/>
-      Token: {token}<br/>
-      User: {user}<br/>
-      */}
     </div>
   );
 }

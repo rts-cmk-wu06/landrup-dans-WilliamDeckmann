@@ -12,11 +12,9 @@ import ActivityCard from "./ActivityCard";
 const ActivityList = () => {
 
   // Context & end-point
+  const [activities, setActivities] = useState();
   const api = useContext(ApiContext);
   const endPoint = "/activities";
-
-  // Use-states
-  const [activities, setActivities] = useState();
   
   // Fetch with Axios
   useEffect(() => {

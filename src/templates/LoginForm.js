@@ -33,7 +33,7 @@ const LoginForm = () => {
   // Context
   const { setAuthenticated } = useContext(AuthContext);
   const { setToken } = useContext(TokenContext);
-  const { setName, setPassword } = useContext(UserContext);
+  const { setId, setName, setPassword } = useContext(UserContext);
 
   // API fetch data
   const [loginError, setLoginError] = useState(undefined);
@@ -54,6 +54,7 @@ const LoginForm = () => {
       setLoading(false);
     }
 
+    // Post user to get token
     axios
       .post(
         api + endPoint,
@@ -71,6 +72,7 @@ const LoginForm = () => {
         if (response.status === 200) {
           setAuthenticated(true);
           setToken(response.data.token);
+          setId(response.data.userId);
           setName(userName);
           setPassword(userPassword);
           setLoginError(false);
@@ -87,6 +89,7 @@ const LoginForm = () => {
       });
   };
 
+  // Update username & password
   const UpdateName = (event) => {
     setUserName(event.target.value);
   };

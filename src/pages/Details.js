@@ -1,76 +1,43 @@
 // Imports
-import { useState, useEffect, useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useContext } from "react";
 
 // Context
-import { ApiContext } from "../context/ContextProvider";
+import { AuthContext } from "../context/ContextProvider";
+import { UserContext } from "../context/ContextProvider";
 
 // Templates
-import PageContainer from "../templates/PageContainer";
+import DetailsContainer from "../templates/DetailsContainer";
+import RosterList from "../templates/RosterList";
 import NavigationMenu from "../templates/NavigationMenu";
 
-// Components
-import Button from "../components/Button";
-import TextMedium from "../components/TextMedium";
-import TextSmall from "../components/TextSmall";
-import Loader from "../components/Loader";
-
 const Details = () => {
-  // Signup function
-  const SignUp = () => {
-    console.log("clicked!");
+
+  // Context
+  const { authenticated } = useContext(AuthContext);
+  const { name } = useContext(UserContext);
+
+  // Return to login
+  const ShowList = () => {
+    if (authenticated) {
+      if (name.includes("instructor")) {
+        return (
+          <RosterList />
+        )
+      } else {
+        return (
+          <DetailsContainer />
+        )
+      }
+    } else {
+      return (
+        <DetailsContainer />
+      )
+    }
   };
 
-  // USer id
-  const location = useLocation();
-  const path = location.pathname.replace("/details/activity-", "");
-
-  // Context & end-point
-  const api = useContext(ApiContext);
-  const endPoint = `/activities/${path}`;
-
-  // Use-states
-  const [activities, setActivities] = useState();
-
-  // Fetch with Axios
-  useEffect(() => {
-    axios.get(api + endPoint).then((result) => {
-      setActivities(result.data);
-    });
-  }, []);
-
-  // Update with use-effect
-  useEffect(() => {
-  }, [activities]);
-
   return (
-    <div className="Details min-h-screen h-screen grid bg-purple">
-      {activities ? (
-        <div
-          className="py-6 px-[27px] flex justify-end items-end bg-no-repeat bg-cover bg-center"
-          style={{ backgroundImage: `url(${activities.asset.url})` }}
-        >
-          <Button text="Tilmeld" function={SignUp} />
-        </div>
-      ) : (
-        <Loader text="details" contrast={true} />
-      )}
-      <PageContainer>
-        {activities ? (
-          <article className="flex flex-col gap-2">
-            <header className="flex flex-col">
-              <TextMedium text={activities.name} />
-              <TextSmall
-                text={`${activities.minAge}-${activities.maxAge} år`}
-              />
-            </header>
-            <TextSmall text={activities.description} />
-          </article>
-        ) : (
-          <Loader text="details" />
-        )}
-      </PageContainer>
+    <div className="Details">
+      {ShowList()}
       <NavigationMenu />
     </div>
   );
