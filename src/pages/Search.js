@@ -8,11 +8,11 @@ import { SearchContext } from "../context/ContextProvider";
 import NavigationMenu from "../templates/NavigationMenu";
 import PageContainer from "../templates/PageContainer";
 import PageHeader from "../templates/PageHeader";
+import SearchBar from "../templates/SearchBar";
 import ActivityListFiltered from "../templates/ActivityListFiltered";
 
 // Components
 import TextLarge from "../components/TextLarge";
-import SearchBar from "../components/SearchBar";
 import TextSmall from "../components/TextSmall";
 
 const Search = () => {
@@ -39,7 +39,7 @@ const Search = () => {
     <div className="Search min-h-screen bg-purple">
       <PageContainer>
         <PageHeader>
-          <TextLarge text="Aktiviteter" />
+          <TextLarge text="Søg" />
           <SearchBar />
         </PageHeader>
         {CheckInput()}

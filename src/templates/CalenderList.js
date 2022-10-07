@@ -43,7 +43,6 @@ const CalenderList = () => {
           }
         })
         .then((result) => {
-          console.log(result);
           const converted = Object.values(result.data.activities);
           setActivities(converted);
         })

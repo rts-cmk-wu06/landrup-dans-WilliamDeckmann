@@ -107,7 +107,7 @@ const LoginForm = () => {
         <input
           id="Name"
           type="text"
-          className="w-full px-[22px] py-[15px] bg-grey"
+          className="w-full px-[22px] py-[15px] bg-grey focus:outline-none"
           placeholder="brugernavn"
           {...register("Name", {
             onChange: UpdateName,
@@ -116,8 +116,8 @@ const LoginForm = () => {
         {errors.Password && <TextSmall text={errors.Password.message} />}
         <input
           id="Password"
-          type="text"
-          className="w-full px-[22px] py-[15px] bg-grey"
+          type="password"
+          className="w-full px-[22px] py-[15px] bg-grey focus:outline-none"
           placeholder="adgangskode"
           {...register("Password", {
             onChange: UpdatePassword,

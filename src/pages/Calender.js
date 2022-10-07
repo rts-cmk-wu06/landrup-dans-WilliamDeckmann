@@ -15,6 +15,7 @@ import PageContainer from "../templates/PageContainer";
 import PageHeader from "../templates/PageHeader";
 import CalenderList from "../templates/CalenderList";
 import CalenderRosterList from "../templates/CalenderRosterList";
+import TextSmall from "../components/TextSmall";
 
 const Calender = () => {
 
@@ -25,10 +26,12 @@ const Calender = () => {
   // Navigate
   const navigate = useNavigate();
 
-  // Return to login
-  const Navigate = () => {
-    navigate("/login")
-  };
+  // Check for authentication
+  useEffect(() => {
+    if (!authenticated) {
+      navigate("/login")
+    }
+  }, [authenticated])
 
   // Return to login
   const ShowList = () => {
@@ -49,7 +52,9 @@ const Calender = () => {
         <PageHeader>
           <TextLarge text="Kalender" />
         </PageHeader>
-        {authenticated ? ShowList() : Navigate()}
+        {authenticated ? ShowList() : (
+          <TextSmall text="Du skal være logget ind for at se dette indhold" />
+        )}
       </PageContainer>
       <NavigationMenu/>
     </div>
