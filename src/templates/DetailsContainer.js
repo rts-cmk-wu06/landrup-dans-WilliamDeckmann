@@ -38,7 +38,7 @@ const DetailsContainer = () => {
   // Context & end-point
   const [activity, setActivity] = useState();
   const [activities, setActivities] = useState();
-  const [joined, setJoined] = useState(undefined);
+  const [joined, setJoined] = useState(false);
   const api = useContext(ApiContext);
   const endPoint = `/activities/${path}`;
   const userEndPoint = `/users/${id}`;
@@ -58,6 +58,7 @@ const DetailsContainer = () => {
 
   // Fetch user with Axios
   useEffect(() => {
+    console.log("test")
     if (authenticated) {
       axios
         .get(api + userEndPoint,
@@ -78,11 +79,12 @@ const DetailsContainer = () => {
           setLoading(false);
         });
     };
-  }, []);
+  }, [joined]);
 
   // Signup function
   const SignUp = () => {
-    console.log("Sign up!");
+
+    // Loading
     setLoginError(undefined);
     if (loginError == undefined) {
       setLoading(true);
@@ -92,6 +94,9 @@ const DetailsContainer = () => {
 
     axios
     .post(api + userEndPoint + endPoint,
+    {
+      "body": ""
+    },
     {
       headers: {
         "Authorization": `Bearer ${token}`
@@ -103,26 +108,22 @@ const DetailsContainer = () => {
         setJoined(true)
         setLoginError(false);
         setLoading(false);
-        console.log("success");
+        console.log("Success med at tilmelde");
       } else {
         setLoginError(true);
         setLoading(false);
       }
     })
     .catch(function (error) {
-      setJoined(false)
       setLoginError(true);
       setLoading(false);
-      console.log("fail...");
-      console.log(error);
-      console.log(api + userEndPoint + endPoint);
-      console.log(token);
     });
   };
 
   // Signup function
   const Leave = () => {
-    console.log("Leave!");
+
+    // Loading
     setLoginError(undefined);
     if (loginError == undefined) {
       setLoading(true);
@@ -140,41 +141,36 @@ const DetailsContainer = () => {
     .then((response) => {
       console.log(response);
       if (response.status == 200) {
-        setJoined(true)
+        setJoined(false)
         setLoginError(false);
         setLoading(false);
+        console.log("Success med at forlade");
       } else {
         setLoginError(true);
         setLoading(false);
       }
     })
     .catch(function (error) {
-      setJoined(false)
       setLoginError(true);
       setLoading(false);
     });
   };
 
-  // Update with use-effect
-  useEffect(() => {
-  }, [ activity, activities, joined ]);
-
-  const CheckForActivities = () => {
+  // Check state
+  const CheckState = () => {
     let converted = Object.values(activities);
-    if(converted.length > 0) {
+    if (converted.length > 0) {
       return (
         <div>
-          {converted.map((item) => {
-            if (item.id == activity.id) {
-              return (
+          {converted.map((item) => (
+            <div>
+              {item.id == activity.id ? (
                 <Button text="Forlad" function={Leave} />
-              )
-            } else {
-              return (
+              ) : (
                 <Button text="Tilmeld" function={SignUp} />
-              )
-            }
-          })}
+              )}
+            </div>
+          ))}
         </div>
       )
     } else {
@@ -193,13 +189,13 @@ const DetailsContainer = () => {
         >
         {authenticated ? (
           <div>
-            {activities ? CheckForActivities() : (
+            {activities ? CheckState()  
+              : (
               <Loader text="detaljer" />
             )}
           </div>
         ) : (
-          
-          <Button text="Tilmeld" function={Navigate} />
+          <Button text="Log ind for at tilmelde dig" function={Navigate} />
         )}
         </div>
       ) : (
