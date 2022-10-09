@@ -38,20 +38,44 @@ const RosterList = () => {
   const [activities, setActivities] = useState();
   const activitiesEndPoint = `/activities/${path}`;
 
-  // Fetch with Axios
-  useEffect(() => {
-    axios.get(api + activitiesEndPoint).then((result) => {
-      setActivities(result.data);
-    });
-  }, []);
-
   // Login & loading
   const [loginError, setLoginError] = useState(undefined);
   const [loading, setLoading] = useState(false);
 
   // Fetch with Axios
   useEffect(() => {
+
+    // Loading
+    setLoginError(undefined);
+    if (loginError == undefined) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+
+    axios.get(api + activitiesEndPoint).then((result) => {
+      setActivities(result.data);
+      setLoginError(false);
+      setLoading(false);
+    })
+    .catch(function (error) {
+      setLoginError(true);
+      setLoading(false);
+    });
+  }, []);
+
+  // Fetch with Axios
+  useEffect(() => {
     if (authenticated) {
+
+      // Loading
+      setLoginError(undefined);
+      if (loginError == undefined) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+      }
+
       axios
         .get(api + endPoint,
         {
@@ -64,6 +88,8 @@ const RosterList = () => {
           console.log(result);
           const converted = Object.values(result.data);
           setRoster(converted);
+          setLoginError(false);
+          setLoading(false);
         })
         .catch(function (error) {
           setLoginError(true);
