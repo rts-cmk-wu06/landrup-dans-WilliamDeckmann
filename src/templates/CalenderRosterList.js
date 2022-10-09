@@ -28,15 +28,10 @@ const CalenderRosterList = () => {
   // Fetch with Axios
   useEffect(() => {
     axios.get(api + endPoint).then((result) => {
-      console.log(result);
       const converted = Object.values(result.data);
       setActivities(converted);
     });
   }, []);
-
-  // Update with use-effect
-  useEffect(() => {
-  }, [activities]);
 
   return (
     <div className="Calender-list">

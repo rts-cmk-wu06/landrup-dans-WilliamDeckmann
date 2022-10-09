@@ -20,6 +20,9 @@ import Loader from "../components/Loader";
 
 const DetailsContainer = () => {
 
+  // Styling
+  const margin = "24px"
+
   // Context & authentication
   const { authenticated } = useContext(AuthContext);
   const { token } = useContext(TokenContext);
@@ -38,6 +41,7 @@ const DetailsContainer = () => {
   // Context & end-point
   const [activity, setActivity] = useState();
   const [activities, setActivities] = useState();
+  const [userData, setUserData] = useState();
   const [joined, setJoined] = useState(false);
   const api = useContext(ApiContext);
   const endPoint = `/activities/${path}`;
@@ -50,15 +54,12 @@ const DetailsContainer = () => {
   // Fetch activity with Axios
   useEffect(() => {
     axios.get(api + endPoint).then((result) => {
-      console.log("Fetch details");
-      console.log(result);
       setActivity(result.data);
     });
   }, []);
 
-  // Fetch user with Axios
-  useEffect(() => {
-    console.log("test")
+  // Re-fetch user data
+  const ReFecthUser = () => {
     if (authenticated) {
       axios
         .get(api + userEndPoint,
@@ -69,17 +70,16 @@ const DetailsContainer = () => {
           }
         })
         .then((result) => {
-          console.log("Fetch user");
-          console.log(result);
           const converted = Object.values(result.data.activities);
           setActivities(converted);
+          setUserData(result.data)
         })
         .catch(function (error) {
           setLoginError(true);
           setLoading(false);
         });
     };
-  }, [joined]);
+  }
 
   // Signup function
   const SignUp = () => {
@@ -103,12 +103,11 @@ const DetailsContainer = () => {
       }
     })
     .then((response) => {
-      console.log(response);
       if (response.status == 200) {
         setJoined(true)
+        ReFecthUser()
         setLoginError(false);
         setLoading(false);
-        console.log("Success med at tilmelde");
       } else {
         setLoginError(true);
         setLoading(false);
@@ -139,12 +138,11 @@ const DetailsContainer = () => {
       }
     })
     .then((response) => {
-      console.log(response);
       if (response.status == 200) {
         setJoined(false)
+        ReFecthUser()
         setLoginError(false);
         setLoading(false);
-        console.log("Success med at forlade");
       } else {
         setLoginError(true);
         setLoading(false);
@@ -156,23 +154,66 @@ const DetailsContainer = () => {
     });
   };
 
+  // Fetch user with Axios
+  useEffect(() => {
+    ReFecthUser()
+  }, [joined]);
+
   // Check state
   const CheckState = () => {
     let converted = Object.values(activities);
     if (converted.length > 0) {
       return (
         <div>
-          {converted.map((item) => (
-            <div>
-              {item.id == activity.id ? (
+          {converted.map((item) => {
+
+            // Check if ID Matches
+            if(item.id == activity.id) {
+              return (
                 <Button text="Forlad" function={Leave} />
-              ) : (
+              )
+
+            // Check if age is too low
+            } else if (activity.minAge > userData.age) {
+              return (
+                <Button text="Bruger er for ung" />
+              )
+            
+            // Check if age is too high
+            } else if (activity.maxAge < userData.age) {
+              return (
+                <Button text="Bruger er for gammel" />
+              )
+
+            // Show button
+            } else if (item.weekday == activity.weekday) {
+              return (
+                <Button text="Dato allerede booked" />
+              )
+
+            // Show button
+            } else {
+              return (
                 <Button text="Tilmeld" function={SignUp} />
-              )}
-            </div>
-          ))}
+              )
+            }}
+          )}
         </div>
       )
+
+    // Check if age is too low
+    } else if (activity.minAge > userData.age) {
+      return (
+        <Button text="Bruger er for ung" />
+      )
+    
+    // Check if age is too high
+    } else if (activity.maxAge < userData.age) {
+      return (
+        <Button text="Bruger er for gammel" />
+      )
+
+    // Show button
     } else {
       return (
         <Button text="Tilmeld" function={SignUp} />
@@ -180,8 +221,15 @@ const DetailsContainer = () => {
     }
   }
 
+  // First letter uppercase
+  function FirstLetterUpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
-    <div className="Details-container min-h-screen h-screen grid bg-purple">
+    <div className="Details-container grid bg-purple"
+      style={{minHeight: `calc(100vh - ${margin})`}}
+    >
       {activity ? (
         <div
           className="py-6 px-[27px] flex justify-end items-end bg-no-repeat bg-cover bg-center"
@@ -200,22 +248,26 @@ const DetailsContainer = () => {
         </div>
       ) : (
         <div className="p-7">
-          <Loader text="details" />
+          <Loader text="detaljer" />
         </div>
       )}
-      <PageContainer>
+      <PageContainer topMargin={margin}>
         {activity ? (
           <article className="flex flex-col gap-2">
             <header className="flex flex-col">
               <TextMedium text={activity.name} />
-              <TextSmall
-                text={`${activity.minAge}-${activity.maxAge} år`}
-              />
+              <section className="flex gap-2">
+                <TextSmall
+                  text={`${activity.minAge}-${activity.maxAge} år`}
+                />
+                <TextSmall text="|" />
+                <TextSmall text={`${FirstLetterUpperCase(activity.weekday)} ${activity.time}`} />
+              </section>
             </header>
             <TextSmall text={activity.description} />
           </article>
         ) : (
-          <Loader text="details" />
+          <Loader text="detaljer" />
         )}
       </PageContainer>
     </div>

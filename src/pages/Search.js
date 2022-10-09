@@ -16,6 +16,10 @@ import TextLarge from "../components/TextLarge";
 import TextSmall from "../components/TextSmall";
 
 const Search = () => {
+
+  // Styling
+  const margin = "186px"
+
   // Context
   const { searchState } = useContext(SearchContext);
 
@@ -36,12 +40,14 @@ const Search = () => {
   }
 
   return (
-    <div className="Search min-h-screen bg-purple">
-      <PageContainer>
-        <PageHeader>
-          <TextLarge text="Søg" />
-          <SearchBar />
-        </PageHeader>
+    <div className="Search bg-purple"
+      style={{minHeight: `calc(100vh - ${margin})`}}
+    >
+      <PageHeader>
+        <TextLarge text="Søg" />
+        <SearchBar />
+      </PageHeader>
+      <PageContainer topMargin={margin}>
         {CheckInput()}
       </PageContainer>
       <NavigationMenu />

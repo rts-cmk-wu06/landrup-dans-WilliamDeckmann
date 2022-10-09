@@ -45,10 +45,6 @@ const RosterList = () => {
     });
   }, []);
 
-  // Update with use-effect
-  useEffect(() => {
-  }, [activities]);
-
   // Login & loading
   const [loginError, setLoginError] = useState(undefined);
   const [loading, setLoading] = useState(false);
@@ -65,6 +61,7 @@ const RosterList = () => {
           }
         })
         .then((result) => {
+          console.log(result);
           const converted = Object.values(result.data);
           setRoster(converted);
         })
@@ -75,15 +72,25 @@ const RosterList = () => {
     };
   }, []);
 
-  // Update with use-effect
-  useEffect(() => {}, [roster]);
+  const LoadName = () => {
+    let converted = Object.values(activities);
+    if (converted.length > 0) {
+      return (
+        <TextLargeSnippet text={activities.name} />
+      )
+    } else {
+      return (
+        <TextLargeSnippet text="Aktivitet" />
+      )
+    }
+  }
 
   return (
     <div className="RosterList min-h-screen bg-purple">
       <PageContainer>
         <PageHeader>
           <div className="overflow-hidden">
-            <TextLargeSnippet text={activities.name} />
+            {activities ? LoadName() : <Loader text="aktivitets navn" />}
           </div>
         </PageHeader>
         {authenticated && (

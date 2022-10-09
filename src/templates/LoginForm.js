@@ -70,6 +70,7 @@ const LoginForm = () => {
       )
       .then((response) => {
         if (response.status === 200) {
+          console.log(response);
           setAuthenticated(true);
           setToken(response.data.token);
           setId(response.data.userId);

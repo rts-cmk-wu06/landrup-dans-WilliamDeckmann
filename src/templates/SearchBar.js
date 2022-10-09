@@ -44,15 +44,13 @@ const SearchBar = () => {
     }
   };
 
-  useEffect(() => {
-  }, [searchState]);
-
   return (
     <div className="Search-bar px-[17px] py-[15px] bg-grey-faded my-3">
       <form onSubmit={handleSubmit(UpdateSearch)} className="flex justify-between gap-[17px]">
         <input
           type="text"
-          className="w-full bg-transparent focus:outline-none" 
+          className="w-full focus:outline-none"
+          style={{background: "none"}}
           {...register("Search", {
             onChange: UpdateInput,
           })}

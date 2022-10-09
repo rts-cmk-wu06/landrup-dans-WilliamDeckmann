@@ -8,12 +8,18 @@ import ActivityList from "../templates/ActivityList";
 import TextLarge from "../components/TextLarge";
 
 const Home = () => {
+
+  // Styling
+  const margin = "108px"
+
   return (
-    <div className="Home min-h-screen bg-purple">
-      <PageContainer>
-        <PageHeader>
-          <TextLarge text="Aktiviteter" />
-        </PageHeader>
+    <div className="Home bg-purple"
+      style={{minHeight: `calc(100vh - ${margin})`}}
+    >
+      <PageHeader>
+        <TextLarge text="Aktiviteter" />
+      </PageHeader>
+      <PageContainer topMargin={margin}>
         <ActivityList />
       </PageContainer>
       <NavigationMenu/>

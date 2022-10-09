@@ -8,6 +8,7 @@ import Details from "./pages/Details";
 import Search from "./pages/Search";
 import Calender from "./pages/Calender";
 import Login from "./pages/Login";
+import NoResults from "./pages/NoResults";
 
 // Context
 import { ContextProvider } from "./context/ContextProvider";
@@ -27,7 +28,7 @@ function App() {
           <Route exact path="/search" element={<Search />} />
           <Route exact path="/calender" element={<Calender />} />
           <Route exact path="/login" element={<Login />} />
-          <Route path="*" element={<div>nothing found...</div>} />
+          <Route path="*" element={<NoResults />} />
         </Routes>
       </ContextProvider>
     </div>

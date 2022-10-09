@@ -53,9 +53,6 @@ const CalenderList = () => {
     };
   }, []);
 
-  // Update with use-effect
-  useEffect(() => {}, [activities]);
-
   return (
     <div className="Calender-list">
       {authenticated && (

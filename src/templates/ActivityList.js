@@ -24,10 +24,6 @@ const ActivityList = () => {
     });
   }, []);
 
-  // Update with use-effect
-  useEffect(() => {
-  }, [activities]);
-
   return (
     <div className="Activity-list">
       <ul className="flex flex-col gap-[31px]">

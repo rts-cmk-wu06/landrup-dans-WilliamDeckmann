@@ -16,8 +16,12 @@ import PageHeader from "../templates/PageHeader";
 import CalenderList from "../templates/CalenderList";
 import CalenderRosterList from "../templates/CalenderRosterList";
 import TextSmall from "../components/TextSmall";
+import Loader from "../components/Loader";
 
 const Calender = () => {
+
+  // Styling
+  const margin = "108px"
 
   // Context
   const { authenticated } = useContext(AuthContext);
@@ -47,13 +51,18 @@ const Calender = () => {
   };
 
   return (
-    <div className="Calender min-h-screen bg-purple">
-      <PageContainer>
-        <PageHeader>
-          <TextLarge text="Kalender" />
-        </PageHeader>
+    <div className="Calender bg-purple"
+      style={{minHeight: `calc(100vh - ${margin})`}}
+    >
+      <PageHeader>
+        <TextLarge text="Kalender" />
+      </PageHeader>
+      <PageContainer topMargin={margin}>
         {authenticated ? ShowList() : (
-          <TextSmall text="Du skal være logget ind for at se dette indhold" />
+          <div className="flex flex-col gap-2">
+            <TextSmall text="Du skal være logget ind for at se det her indhold." />
+            <Loader text="login side" />
+          </div>
         )}
       </PageContainer>
       <NavigationMenu/>

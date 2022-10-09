@@ -1,3 +1,4 @@
+// Components
 import TextSmall from "./TextSmall";
 
 const Loader = (props) => {
