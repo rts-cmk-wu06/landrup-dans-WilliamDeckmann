@@ -44,7 +44,7 @@ En alternativ made til at prop drilling der tillader at man skaber globale varia
 
 Indlæser indholdet direkte i React, i stedet for at realoade hele hjemmesiden. Dette gør det bl.a. mere performance-venligt, da man kan nøjes med kun at loade det relevante indhold på hjemmesiden i stedte for hele siden hver gang routen skifter.
 
-> Jeg valget at bryuge dne her pakke da det gør det muligt at lave mere performance-venlige singlepage applikationer. Pakken kommer også med nogle gode features som kan være praktiske når man skal hente data om dommen. Det er også en pakke jeg har brugt i lang tid, hvilket gør det  nemt for mig hurtigt at integrere den i min applikation.
+> Jeg valget at bryuge dne her pakke da det gør det muligt at lave mere performance-venlige singlepage applikationer. Pakken kommer også med nogle gode features som kan være praktiske når man skal hente data om dommen. Det er også en pakke jeg har brugt i lang tid, hvilket gør det  nemt for mig hurtigt at integrere den i min applikation. Dog er denne pakke primært bygget med det formål at bruges til browsere, så i de tilfælde at jeg skulle udvikle en nativ-app, (hvilket designet ligger meget op til), så ville det give mere mening at bruge en pakke som f.eks. react-router-native.
 
 <br/>
 
@@ -52,7 +52,7 @@ Indlæser indholdet direkte i React, i stedet for at realoade hele hjemmesiden. 
 
 En hook der gør det nemmere at validere input-fields og rendere forskellige fejlmeddelelser til brugen.
 
-> Jeg valget at bruge den her pakke da den er god til at isolere komponenter, hvilket er mere performance-friendly, da det gør muligt ikke at rendere unødvendige komponenter, når man støder på fejl i ens input validering. Det er også nemt at integrere Yup i den her pakke, hvilket er et stort plus, da det også gør det nemmere at udføre validering.
+> Jeg valget at bruge den her pakke da den er god til at isolere komponenter, hvilket er mere performance-friendly, da det gør muligt ikke at rendere unødvendige komponenter, når man støder på fejl i ens input validering. Det er også nemt at integrere Yup i den her pakke, hvilket er et stort plus, da det også gør det nemmere at udføre validering. Det gav også rigtig god mening at bruge den her pakke, da den nemt integrerer Yup, som er en pakke jeg også gør brug af.
 
 <br/>
 
@@ -60,7 +60,7 @@ En hook der gør det nemmere at validere input-fields og rendere forskellige fej
 
 Gør det nemmere at organisere forskellige "schema", når man også benytter sig af "react-hook-forms" pakken.
 
-> Jeg valgte at bruge Yup, da det tillader en at lave et schema til ens form validering, hvilket er praktisk når man f.eks. skal validere flere forskellige input felter, da man kan specificere hvordan hver enkelte af felterne skal valideres i et samlet dokument, der så senere kan importeres.
+> Jeg valgte at bruge Yup, da det tillader en at lave et schema til ens form validering, hvilket er praktisk når man f.eks. skal validere flere forskellige input felter, da man kan specificere hvordan hver enkelte af felterne skal valideres i et samlet dokument, der så senere kan importeres. Der findes mange forskellige pakker og løsninger til at håndtere input validering, dog har jeg alligevel siddet mest med Yup, så det var enten valget mellem at bruge Yup og benytte mig af et schema, eller at lave alt valideringen fra bunden af, hvilket ville have været meget tidskrævende at sætte op, så i det her tilfælde var det at bruge Yup en klar løsning. (Udover det, så ville det også have været meget kedeligt at skulle designe alt valideringslogikken selv, og det er det altså bare ret nemt med Yup).
 
 <br/>
 
