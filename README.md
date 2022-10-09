@@ -6,7 +6,7 @@
 
 **Hold:** WU06
 
-**Periode:** 03/10/22 – 07/10/22
+**Periode:** 03/10/22 – 07/10/22 (udskudt til 09/10/22)
 
 <br/>
 
@@ -39,14 +39,6 @@ En alternativ made til at prop drilling der tillader at man skaber globale varia
 <br/>
 
 ## Core packet
-
-### react-error-boundary
-
-En genbrugelige måde at rendere error-messages på en præsentabel måde, hvor som helst i ens komponent hierarki.
-
-> Jeg valgte at bruge den her pakke da jeg har erfaring med at bruge den og det er nemt at integrere fejlbeskederne i ens eget design.
-
-<br/>
 
 ### react-router-dom
 
@@ -90,18 +82,14 @@ Er et framework der gør det muligt meget hurtigt og nemt at style på ens kompo
 
 ## Yderligere imports
 
-### Google fonts (Poppins)
+### Google fonts (Ubuntu)
 Importere font-styles direkte fra Googles egen database of henter fontene direkte ind i dit givende stlyesheet, så de kan bruges til at style forskellige componenter med.
 
-> Jeg valgte at bruge Google fonts at til at hente mine fonte, da det indeholder et omfattende bibliotek af forskellige fonte i forskellige stile som nemt kan importeres i ens projekt. Projektet gjorde også brug af fontene ”Poppins”, "Roboto" og "Racing Sans One", som kunne hente fra Google fonts, så det var oplagt at hente den derfra.
+> Jeg valgte at bruge Google fonts at til at hente mine fonte, da det indeholder et omfattende bibliotek af forskellige fonte i forskellige stile som nemt kan importeres i ens projekt. Projektet gjorde også brug af fontene "Ubuntu", som kunne hentes fra Google fonts, så det var oplagt at hente den derfra.
 
-**Link to Google fonte:** 
+**Link to Google fonts:** 
 
 - https://fonts.google.com/specimen/Ubuntu
-  
-- https://fonts.google.com/specimen/Roboto
-
-- https://fonts.google.com/specimen/Racing+Sans+One
 
 <br/>
 
@@ -141,10 +129,54 @@ Opgaven bestod i at ligge applikationen automatisk op på en online tjeneste, so
 
 **Mandag morgen:**
 
-![Mandag morgen](./kanban/xxxxx.PNG)
+![Mandag morgen](./kanban/Trello%20board%20-%20mandag%20morgen%2003.10.2022.PNG)
+
+**Mandag eftermiddag:**
+
+![Mandag eftermiddag](./kanban/Trello%20board%20-%20mandag%20eftermiddag%2003.10.2022.PNG)
+
+**Tirsdag morgen:**
+
+![Tirsdag morgen](./kanban/Trello%20board%20-%20tirsdag%20morgen%2004.10.2022.PNG)
+
+**Tirsdag eftermiddag:**
+
+![Tirsdag eftermiddag](./kanban/Trello%20board%20-%20tirsdag%20eftermiddag%2004.10.2022.PNG)
+
+**Onsdag morgen:**
+
+![Onsdag morgen](./kanban/Trello%20board%20-%20onsdag%20morgen%2005.10.2022.PNG)
+
+**Onsdag eftermiddag:**
+
+![Onsdag eftermiddag](./kanban/Trello%20board%20-%20onsdag%20eftermiddag%2005.10.2022.PNG)
+
+**Torsdag morgen:**
+
+![Torsdag morgen](./kanban/Trello%20board%20-%20torsdag%20morgen%2006.10.2022.PNG)
+
+**Torsdag eftermiddag:**
+
+![Torsdag eftermiddag](./kanban/Trello%20board%20-%20torsdag%20eftermiddag%2006.10.2022.PNG)
+
+**Fredag morgen:**
+
+![Fredag morgen](./kanban/Trello%20board%20-%20fredag%20morgen%2007.10.2022.PNG)
+
+**Fredag eftermiddag:**
+
+![Fredag eftermiddag](./kanban/Trello%20board%20-%20fredag%20eftermiddag%2007.10.2022.PNG)
+
+**(Søndag morgen):**
+
+![Søndag morgen](./kanban/Trello%20board%20-%20onsdag%20morgen%2005.10.2022.PNG)
+
+**(Søndag eftermiddag):**
+
+![Søndag eftermiddag](./kanban/Trello%20board%20-%20soendag%20eftermiddag%2009.10.2022.PNG)
 
 <br/>
 
 ## Projekt perspektivering
 
-> xxxxx
+> Fremadrettet kunne jeg godt tænke mig at implementere nogle flere sikkerhedsforanstaltninger, for at mindste risikoen for at sider ikke bliver vist korrekt, eller at brugeren ikke ender op på en side der ikke bør eksistere. Jeg ville også gerne integrere nogle error-boundaries, for bedre at kunne kommunikere til brugen hvad der er gået galt, og i det hele taget give en bedre brugeroplevelse. Det kunne også være dejligt at lave applikationen om til en PWA, sådan at man også kunne installere den til ens hjemmeskærm. Dette giver specialet god mening, da layoutet i forvejen er designet til mobile-first. Udover det tror jeg også at det kunne være praktisk at tjekke for ting som f.eks. internet tilslutning, for i det tilfælde at vise brugeren et alternativt design i stedet, (lidt ligesom Chrome gør). Ellers ville jeg personligt synes at det også kunne være rart med lidt flere animationer, til f.eks. page-transitions og laoding.
