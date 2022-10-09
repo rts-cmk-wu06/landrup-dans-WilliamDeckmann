@@ -36,18 +36,19 @@ const LoginForm = () => {
   const { setId, setName, setPassword } = useContext(UserContext);
 
   // API fetch data
-  const [loginError, setLoginError] = useState(undefined);
-  const [loading, setLoading] = useState(false);
   const [userName, setUserName] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const api = "http://localhost:4000";
   const endPoint = "/auth/token";
 
+  // Login & loading
+  const [loginError, setLoginError] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+
   const HandlePost = () => {
 
     // Loading
     setLoginError(undefined);
-    setLoading(false);
     if (loginError == undefined) {
       setLoading(true);
     } else {
@@ -69,20 +70,16 @@ const LoginForm = () => {
         }
       )
       .then((response) => {
-        if (response.status === 200) {
-          console.log(response);
-          setAuthenticated(true);
-          setToken(response.data.token);
-          setId(response.data.userId);
-          setName(userName);
-          setPassword(userPassword);
-          setLoginError(false);
-          setLoading(false);
-          navigate("/calender")
-        } else {
-          setLoginError(true);
-          setLoading(false);
-        }
+        console.log(response);
+        setAuthenticated(true);
+        setToken(response.data.token);
+        setId(response.data.userId);
+        setName(userName);
+        setPassword(userPassword);
+        setLoginError(false);
+        setLoading(false);
+        navigate("/calender")
+
       })
       .catch(function (error) {
         setLoginError(true);
