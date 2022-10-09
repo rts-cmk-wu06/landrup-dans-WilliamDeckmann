@@ -34,6 +34,15 @@ const CalenderList = () => {
   // Fetch with Axios
   useEffect(() => {
     if (authenticated) {
+
+      // Loading
+      setLoginError(undefined);
+      if (loginError == undefined) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+      }
+
       axios
         .get(api + endPoint,
         {
@@ -45,6 +54,8 @@ const CalenderList = () => {
         .then((result) => {
           const converted = Object.values(result.data.activities);
           setActivities(converted);
+          setLoginError(false);
+          setLoading(false);
         })
         .catch(function (error) {
           setLoginError(true);

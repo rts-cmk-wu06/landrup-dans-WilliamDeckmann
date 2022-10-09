@@ -53,14 +53,38 @@ const DetailsContainer = () => {
 
   // Fetch activity with Axios
   useEffect(() => {
+
+    // Loading
+    setLoginError(undefined);
+    if (loginError == undefined) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+
     axios.get(api + endPoint).then((result) => {
       setActivity(result.data);
+      setLoginError(false);
+      setLoading(false);
+    })
+    .catch(function (error) {
+      setLoginError(true);
+      setLoading(false);
     });
   }, []);
 
   // Re-fetch user data
   const ReFecthUser = () => {
     if (authenticated) {
+
+      // Loading
+      setLoginError(undefined);
+      if (loginError == undefined) {
+        setLoading(true);
+      } else {
+        setLoading(false);
+      }
+
       axios
         .get(api + userEndPoint,
         {
@@ -73,6 +97,8 @@ const DetailsContainer = () => {
           const converted = Object.values(result.data.activities);
           setActivities(converted);
           setUserData(result.data)
+          setLoginError(false);
+          setLoading(false);
         })
         .catch(function (error) {
           setLoginError(true);
@@ -103,15 +129,10 @@ const DetailsContainer = () => {
       }
     })
     .then((response) => {
-      if (response.status == 200) {
-        setJoined(true)
-        ReFecthUser()
-        setLoginError(false);
-        setLoading(false);
-      } else {
-        setLoginError(true);
-        setLoading(false);
-      }
+      setJoined(true)
+      ReFecthUser()
+      setLoginError(false);
+      setLoading(false);
     })
     .catch(function (error) {
       setLoginError(true);
@@ -138,15 +159,10 @@ const DetailsContainer = () => {
       }
     })
     .then((response) => {
-      if (response.status == 200) {
-        setJoined(false)
-        ReFecthUser()
-        setLoginError(false);
-        setLoading(false);
-      } else {
-        setLoginError(true);
-        setLoading(false);
-      }
+      setJoined(false)
+      ReFecthUser()
+      setLoginError(false);
+      setLoading(false);
     })
     .catch(function (error) {
       setLoginError(true);
@@ -252,6 +268,16 @@ const DetailsContainer = () => {
         </div>
       )}
       <PageContainer topMargin={margin}>
+        {loading && (
+          <section className="mb-2">
+            <TextSmall text="Behandler detaljer..." />
+          </section>
+        )}
+        {loginError && (
+          <section className="mb-2">
+            <TextSmall text="Noget gik galt!" />
+          </section>
+        )}
         {activity ? (
           <article className="flex flex-col gap-2">
             <header className="flex flex-col">

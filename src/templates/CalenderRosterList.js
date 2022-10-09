@@ -11,6 +11,7 @@ import { UserContext } from "../context/ContextProvider";
 import CalenderCard from "./CalenderCard";
 
 // Components
+import TextSmall from "../components/TextSmall";
 import Loader from "../components/Loader";
 
 const CalenderRosterList = () => {
@@ -25,11 +26,30 @@ const CalenderRosterList = () => {
   //const endPoint = `/users/${id}`;
   const endPoint = "/activities";
 
+  // Login & loading
+  const [loginError, setLoginError] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+
   // Fetch with Axios
   useEffect(() => {
+
+    // Loading
+    setLoginError(undefined);
+    if (loginError == undefined) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+
     axios.get(api + endPoint).then((result) => {
       const converted = Object.values(result.data);
       setActivities(converted);
+      setLoginError(false);
+      setLoading(false);
+    })
+    .catch(function (error) {
+      setLoginError(true);
+      setLoading(false);
     });
   }, []);
 
@@ -37,6 +57,16 @@ const CalenderRosterList = () => {
     <div className="Calender-list">
       {authenticated && (
         <div>
+          {loading && (
+            <section className="mb-2">
+              <TextSmall text="Behandler kalender..." />
+            </section>
+          )}
+          {loginError && (
+            <section className="mb-2">
+              <TextSmall text="Noget gik galt!" />
+            </section>
+          )}
           <ul className="flex flex-col gap-[30px]">
             {activities ? (
               activities.map((activity) => {
